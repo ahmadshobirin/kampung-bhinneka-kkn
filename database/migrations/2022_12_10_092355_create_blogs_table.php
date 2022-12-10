@@ -15,6 +15,7 @@ class CreateBlogsTable extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id');
             $table->string('title', 200);
             $table->string('slug', 200);
             $table->string('short_desc', 200)->nullable();
@@ -25,6 +26,8 @@ class CreateBlogsTable extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('is_higlight_post')->default(false);
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

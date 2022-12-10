@@ -9,17 +9,15 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $table = 'blogs';
-
     protected $guarded = ['id'];
 
     public function user()
     {
-        return $this->belongsTo(\App\User::class,'user_id', 'id');
+        return $this->belongsTo(\App\Models\User::class,'user_id', 'id');
     }
 
     public function category()
     {
-        return $this->hasMany(\App\BlogCategory::class, 'blog_id', 'id');
+        return $this->belongsTo(\App\Models\Category::class,'category_id', 'id');
     }
 }

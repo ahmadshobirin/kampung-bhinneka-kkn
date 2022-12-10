@@ -2,7 +2,6 @@
 @section("nav-blog", 'active')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/summernote.css') }}" />
 @endsection
 
@@ -11,12 +10,12 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Blog</h3>
+                <h3>Berita</h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                        <li class="breadcrumb-item"><a href="#">Berita</a></li>
                     </ol>
                 </nav>
             </div>
@@ -45,11 +44,11 @@
                                         <div class="col-12">
                                             <label for="">Kategori</label>
                                             <div class="form-group">
-                                                <select name="category_id" class="choices form-select" required multiple>
+                                                <select name="category_id" class="form-select" required >
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     @foreach ($category as $item)
                                                         <option @if( old('category_id') == $item->id ) selected @endif value="{{ $item->id }}"> 
-                                                            {{  $item->name }}</option>
+                                                            {{  ucfirst($item->name) }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -86,7 +85,9 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <a href="{{ route('blog.index') }}" class="btn btn-success me-1 mb-1">Kembali</a>
-                                    <input type="button" value="Submit" class="btn btn-primary me-1 mb-1">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                                        Submit
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -99,9 +100,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ URL::asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/pages/form-element-select.js') }}"></script>
-
     <script src="{{ URL::asset('assets/extensions/summernote/summernote-lite.min.js') }}"></script>
     <script>
         $("#summernote").summernote({

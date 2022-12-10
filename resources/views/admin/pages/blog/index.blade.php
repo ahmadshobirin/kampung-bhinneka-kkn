@@ -1,16 +1,16 @@
 @extends('admin.layouts.app_dashboard')
-@section("nav-umkm", 'active')
+@section("nav-blog", 'active')
 @section('content')
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Blog</h3>
+                <h3>Berita</h3>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Blog</a></li>
+                        <li class="breadcrumb-item"><a href="#">Berita</a></li>
                     </ol>
                 </nav>
             </div>
@@ -32,7 +32,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul</th>
+                                        <th>Kategory</th>
                                         <th>Thumbnail</th>
+                                        <th>Dibuat Oleh</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -42,6 +44,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ ucfirst($item->title) }}</td>
+                                            <td>{{ ucfirst($item->category->name) }}</td>
                                             <td>
                                                 @if($item->thumbnail != null)
                                                     <img src="{{ URL::asset($item->thumbnail) }}" alt="" style="max-height: 120px; max-width: 120px">
@@ -49,6 +52,7 @@
                                                     -
                                                 @endif
                                             </td>
+                                            <td>{{ ucfirst($item->user->name) }}</td>
                                             <td>
                                                 <span class="badge bg-primary"> {{ $item->status }} </span>
                                             </td>
