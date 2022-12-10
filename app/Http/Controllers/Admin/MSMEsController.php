@@ -81,12 +81,16 @@ class MSMEsController extends Controller
 
     public function store(Request $request)
     {
-        $this->checkRequest($request);
-        $this->collectImageAndThumbnail($request);
-
-        MSMEs::create($request->except("_token"));
-
-        return redirect()->route('umkm.index');
+        try {
+            $this->checkRequest($request);
+            $this->collectImageAndThumbnail($request);
+    
+            MSMEs::create($request->except("_token"));
+    
+            return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return redirect()->route('umkm.index')->with('error_msg', 'Data UMKM gagal ditambahkan!');
+        }
     }
 
     public function edit(Request $request, $id)
@@ -102,11 +106,15 @@ class MSMEsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->checkRequest($request);
-        $this->collectImageAndThumbnail($request);
-
-        MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
-
-        return redirect()->route('umkm.index');
+        try {
+            $this->checkRequest($request);
+            $this->collectImageAndThumbnail($request);
+    
+            MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+    
+            return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil diubah!');
+        } catch(\Exception $e) {
+            return redirect()->route('umkm.index')->with('error_msg', 'Data UMKM gagal diubah!');
+        }
     }
 }

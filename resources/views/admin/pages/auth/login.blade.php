@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/auth.css') }}" />
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/logo/favicon.svg') }}" type="image/x-icon" />
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/logo/favicon.png') }}" type="image/png" />
+
 </head>
 
 <body>
@@ -24,6 +25,13 @@
                     <p class="auth-subtitle mb-5">
                         Log in untuk akses panel dashboard
                     </p>
+
+                    @if ($message = Session::get('success'))    
+                        <div class="alert alert-success msg">
+                            <h4 class="alert-heading">Berhasil mengubah password</h4>
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
 
 					@if(Session::has('message'))
                         <p class="alert alert-danger">{!! Session::get('message') !!}</p>
@@ -59,3 +67,5 @@
 </body>
 
 </html>
+
+

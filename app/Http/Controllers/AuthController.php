@@ -36,6 +36,7 @@ class AuthController extends Controller
         return view('admin.pages.auth.change_password');
     }
 
+    // Pengubahan password
     public function store(Request $request)
     {
         try {
@@ -48,9 +49,9 @@ class AuthController extends Controller
             User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
     
             auth()->logout();
-            return redirect()->route('login');
+            return redirect()->route('login')->with('success', 'Silahkan masukkan password terbaru!');
         } catch(\Exception $e) {
-            return redirect()->back()->with('error_msg', 'Gagal mrngubah password!');
+            return redirect()->back()->with('error_msg', 'Gagal mengubah password!');
         }
     }
 }

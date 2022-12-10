@@ -25,8 +25,12 @@ class DemografiController extends Controller
 
     public function update(Request $request, $id)
     {
-        Demografi::where('id', $id)->update($request->except('_method', '_token'));
-
-        return redirect()->route('demografi.index');
+        try {
+            Demografi::where('id', $id)->update($request->except('_method', '_token'));
+    
+            return redirect()->route('demografi.index')->with('success', 'Data demografi berhasil diubah!');
+        } catch(\Exception $e) {
+            return redirect()->route('demografi.index')->with('error_msg', 'Data demografi gagal diubah!');
+        }
     }
 }

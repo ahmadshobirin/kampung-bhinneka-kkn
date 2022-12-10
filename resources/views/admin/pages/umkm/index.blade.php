@@ -16,6 +16,43 @@
             </div>
         </div>
     </div>
+
+    {{-- Alert jika berhasil --}}
+    @if ($message = Session::get('success'))    
+        <div style="width: 30%;">
+            <div
+                class="alert alert-success alert-dismissible fade show msg"
+                role="alert"
+            >
+                {{ $message }}
+                <button
+                type="button"
+                class="btn-close msg"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                ></button>
+            </div>
+        </div>
+    @endif
+
+    {{-- Alert jika gagal --}}
+    @if ($message = Session::get('error_msg'))    
+        <div style="width: 30%;">
+            <div
+                class="alert alert-danger alert-dismissible fade show msg"
+                role="alert"
+            >
+                {{ $message }}
+                <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                ></button>
+            </div>
+        </div>
+    @endif
+
     <section>
         <div class="row match-height">
             <div class="col-md-12 col-12">
@@ -87,4 +124,14 @@
         </div>
     </section>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            setTimeout(function() {
+                $('.msg').fadeOut('slow');
+            }, 5000);
+        });
+    </script>
 @endsection

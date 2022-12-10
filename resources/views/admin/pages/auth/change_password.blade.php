@@ -18,6 +18,24 @@
             </div>
         </div>
 
+        {{-- Jika gagal ubah password --}}
+        @if ($message = Session::get('error_msg'))
+            <div style="width: 30%;">
+                <div
+                    class="alert alert-danger alert-dismissible fade show msg"
+                    role="alert"
+                >
+                    {{ $message }}
+                    <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                    ></button>
+                </div>
+            </div>
+        @endif
+
         {{-- Start Inputan --}}
         <section class="section">
             <form method="POST" action="{{ route('change.password') }}">
@@ -79,4 +97,14 @@
     </div>
 
 
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            setTimeout(function() {
+                $('.msg').fadeOut('slow');
+            }, 5000);
+        });
+    </script>
 @endsection
