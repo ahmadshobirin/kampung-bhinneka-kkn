@@ -69,6 +69,12 @@
                         <span>UMKM</span>
                     </a>
                 </li>
+                {{-- <li class="sidebar-item @yield('nav-blog')">
+                    <a href="{{ route('blog.index') }}" class='sidebar-link'>
+                        <i class="bi bi-paper"></i>
+                        <span>Blog</span>
+                    </a>
+                </li> --}}
                 <li class="sidebar-title">Authentication</li>
                 <li class="sidebar-item @yield('nav-changePassword')">
                     <a href="{{ route('change-password') }}" class="sidebar-link">
