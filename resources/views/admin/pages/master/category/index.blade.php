@@ -20,6 +20,41 @@
             </div>
         </div>
     </div>
+
+    @if ($message = Session::get('success'))    
+        <div style="width: 30%;">
+            <div
+                class="alert alert-success alert-dismissible fade show"
+                role="alert"
+            >
+                {{ $message }}
+                <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+                ></button>
+            </div>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error_msg'))    
+    <div style="width: 30%;">
+        <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+        >
+            {{ $message }}
+            <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            ></button>
+        </div>
+    </div>
+@endif
+
     <section>
         <div class="row match-height">
             <div class="col-md-12 col-12">
@@ -64,6 +99,10 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- <div class="row"> --}}
+                    
+                {{-- </div> --}}
             </div>
         </div>
     </section>
