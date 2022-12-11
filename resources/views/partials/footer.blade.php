@@ -17,19 +17,23 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Tautan</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Demografi</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/berita">Berita</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Potensi Wilayah</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/') }}">Kampung Bhinneka</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/#demografi') }}">Demografi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/berita') }}">Berita</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ url('/umkm') }}">UMKM</a></li>
             </ul>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+            <h4>Mitra</h4>
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <img src="{{ URL::asset('assets/img/UNTAG.png') }}" alt="" class="img-fluid">
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <img src="{{ URL::asset('assets/img/LPPM.png') }}" alt="" class="img-fluid">
+              </div>
+            </div>
           </div>
 
         </div>

@@ -9,13 +9,8 @@
           <li><a class="nav-link scrollto {{ ($parent === 'Beranda') ? 'active' : '' }}" href="/">Beranda</a></li>
           <li><a class="nav-link scrollto {{ ($parent === 'Demografi') ? 'active' : '' }}" href="/#demografi">Demografi</a></li>
           <li><a class="nav-link {{ ($parent === 'Berita') ? 'active' : '' }}" href="/berita">Berita</a></li>
-          <li class="dropdown"><a href="#"><span>Potensi Wilayah</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="/kesenian">Kesenian</a></li>
-              <li><a href="/umkm">UMKM</a></li>
-            </ul>
-          </li>
-        </ul>
+          <li><a class="nav-link {{ ($parent === 'UMKM') ? 'active' : '' }}" href="/umkm">UMKM</a></li>
+          <li><a class="nav-link {{ ($parent === 'penyewaan-baju-adat') ? 'active' : '' }}" href="#">Penyewaan Baju Adat</a></li>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       @auth
