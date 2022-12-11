@@ -14,6 +14,8 @@
     
     <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/shared/iconly.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/extensions/toastify-js/src/toastify.css') }}"
+    />
     @yield('css')
 </head>
 <body>
@@ -50,6 +52,9 @@
     
     <script src="{{ URL::asset('assets/js/jquery-3.5.1.js') }}"></script>
     <script src="{{ URL::asset('assets/js/select2.min.js') }}"></script>
+
+    <script src="{{ URL::asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/pages/toastify.js') }}"></script>
 
     @yield('script')
 </body>

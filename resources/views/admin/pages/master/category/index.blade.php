@@ -23,20 +23,7 @@
 
     {{-- Alert jika berhasil --}}
     @if ($message = Session::get('success'))    
-        <div style="width: 30%;">
-            <div
-                class="alert alert-success alert-dismissible fade show msg"
-                role="alert"
-            >
-                {{ $message }}
-                <button
-                type="button"
-                class="btn-close msg"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-                ></button>
-            </div>
-        </div>
+        <div id="tes"></div>
     @endif
 
     {{-- Alert jika gagal --}}
@@ -113,10 +100,11 @@
 
 @section('script')
     <script>
-        $(document).ready(function(){
-            setTimeout(function() {
-                $('.msg').fadeOut('slow');
-            }, 5000);
-        });
+        Toastify({
+            text: "Data berhasil ditambahkan",
+            duration: 3000,
+            close: true,
+            backgroundColor: "#4fbe87",
+        }).showToast();
     </script>
 @endsection
