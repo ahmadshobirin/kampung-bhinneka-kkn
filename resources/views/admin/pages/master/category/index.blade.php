@@ -70,27 +70,3 @@
     </section>
 </div>
 @endsection
-
-@section('script')
-    <script>
-        // Alert jika berhasil
-        @if ($message = Session::get('success'))    
-            Toastify({
-                text: "{{ $message }}",
-                duration: 3000,
-                close: true,
-                backgroundColor: "#4fbe87",
-            }).showToast();
-        @endif
-
-        // ALert jika gagal
-        @if ($message = Session::get('error_msg'))    
-            Toastify({
-                text: "{{ $message }}",
-                duration: 3000,
-                close: true,
-                backgroundColor: "#f01d1d",
-            }).showToast();
-        @endif
-    </script>
-@endsection

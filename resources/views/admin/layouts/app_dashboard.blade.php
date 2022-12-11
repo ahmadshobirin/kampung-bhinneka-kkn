@@ -56,6 +56,28 @@
     <script src="{{ URL::asset('assets/extensions/toastify-js/src/toastify.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/toastify.js') }}"></script>
 
+    <script>
+        // Alert jika berhasil
+        @if ($message = Session::get('success'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#4fbe87",
+            }).showToast();
+        @endif
+
+        // ALert jika gagal
+        @if ($message = Session::get('error_msg'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#f01d1d",
+            }).showToast();
+        @endif
+    </script>
+    
     @yield('script')
 </body>
 
