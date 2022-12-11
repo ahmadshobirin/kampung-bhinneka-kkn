@@ -25,17 +25,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                "name" => "required|string|unique:categories,id",
-            ]);
-    
-            Category::create($request->except("_token"));
-            return redirect()->route("category.index")->with(['success' => 'Data kategori berhasil ditambahkan!']);
-        } catch(\Exception $e) {
-            return redirect()->route("category.index")->with('error_msg', 'Data kategori gagal ditambahkan!');
-        }
+        $request->validate([
+            "name" => "required|string|unique:categories,id",
+        ]);
 
+        Category::create($request->except("_token"));
+        return redirect()->route("category.index");
     }
 
     public function edit($id)
@@ -49,21 +44,17 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        try {
-            $request->validate([
-                "name" => "required|string|unique:categories,id," . $id,
-            ]);
-    
-            $category = Category::find($id);
-            if (strtolower($category->name) != strtolower($request->name)){
-                BlogCategory::where("category_id", $id)->update(['category' => $request->name]);
-            }
-    
-            $category->update($request->except('_token'));
-            return redirect()->route("category.index")->with('success', 'Data kategori berhasil diubah!');
-        } catch(\Exception $e) {
-            return redirect()->route("category.index")->with('error_msg', 'Data kategori gagal diubah!');
+        $request->validate([
+            "name" => "required|string|unique:categories,id," . $id,
+        ]);
+
+        $category = Category::find($id);
+        if (strtolower($category->name) != strtolower($request->name)){
+            BlogCategory::where("category_id", $id)->update(['category' => $request->name]);
         }
+
+        $category->update($request->except('_token'));
+        return redirect()->route("category.index");
     }
 
     public function destroy($id)

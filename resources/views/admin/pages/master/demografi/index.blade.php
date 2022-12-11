@@ -24,9 +24,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <a href="{{ route('admin.create') }}" class="btn btn-primary">
-                    <i class="fa fa-plus"></i> Tambah Data
-                </a>
+                <h3>Demografi</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

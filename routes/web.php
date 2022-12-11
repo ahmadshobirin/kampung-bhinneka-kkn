@@ -60,6 +60,12 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::post("/category", 'Admin\CategoryController@store')->name('category.store');
     Route::get("/category/{id}/edit", 'Admin\CategoryController@edit')->name('category.edit');
     Route::put("/category/{id}", 'Admin\CategoryController@update')->name('category.update');
+
+    Route::get("/blog", "Admin\BlogController@index")->name("blog.index");
+    Route::get("/blog/create", "Admin\BlogController@create")->name("blog.create");
+    Route::post("/blog/store", "Admin\BlogController@store")->name("blog.store");
+    Route::get("/blog/{id}/edit", "Admin\BlogController@edit")->name("blog.edit");
+    Route::put("/blog/{id}", "Admin\BlogController@update")->name("blog.update");
 });
 
 // inject command artisan

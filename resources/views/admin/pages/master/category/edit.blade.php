@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">
                                     <a href="{{ route('category.index') }}" class="btn btn-success me-1 mb-1">Kembali</a>
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1" >
                                         Submit
                                     </button>
                                 </div>

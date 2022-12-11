@@ -15,7 +15,7 @@
 </section><!-- End Hero -->
 
 @section('main_content')
-    <!-- ======= Sambutan Section ======= -->
+    <!-- ======= Definisi Section ======= -->
     <section id="sambutan" class="sambutan">
       <div class="container" data-aos="fade-up">
         <div class="tab-content">
@@ -26,16 +26,24 @@
                 data-aos="fade-up"
                 data-aos-delay="100"
               >
-                <h5>Ketua RW 11, kelurahan Ngagel Rejo</h5>
+                <h2>Kampung Bhinneka</h2>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum
+                  RW XI Kelurahan Ngagel Rejo disebut sebagai Kampung Bhinneka <br>
+                  karena kehidupan sosial kemasyarakatan sangat terlihat serta seni dan kebudayaan yang beragam salah satu <br>
+                  contohnya adalah adanya toleransi tinggi antar warga dalam berbagai aspek ketahanan  <br>
+                  dengan berbagai metode yaitu Aquaponik Budikdamper dan Penyemprotan Automatis.
                 </p>
-                <p style="font-size: 16px; color: #828893; line-height: 26px">
-                  <strong>- Nama Ketua RW</strong>
+                <p>
+                  Juga Masyrakat yang masih melestarikan Tari Tradisional Seperti Tari Remo <br>
+                  dan Tari Sajojo agar kesenian daerah tetap terjaga tidak hanya tari tradisional, <br>
+                  di Kampung Bhinneka juga Mempelajari Tari Modern. <br>
+                  adapun musik di Kampung Bhinneka juga sangat beragam seperti Volksong Dan Hadrah <br>
+                </p>
+                <p>
+                  Beberapa warga masih menjual makanan tradisional yang resepnya masih turun temurun dan terlegalitas. <br>
+                  disana juga masih ada beberapa warga yang menyewakan baju adat daerah tidak hanya itu, <br>
+                  rim Kampung Bhinneka juga sering menjuarai olahraga Tenis Meja. <br>
+                  terakhir disana juga ada Punden Kh Achmad Zainuri" <br>
                 </p>
               </div>
               <div
@@ -43,26 +51,14 @@
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <img src="assets/img/tabs-1.jpg" alt="" class="img-fluid" />
+                <img src="{{ URL::asset('assets/img/kampung-bhinneka.png') }}" alt="" class="img-fluid" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- End Sambutan Section -->
-
-    <!-- ======= Definisi Section ======= -->
-    <section id="definisi" class="definisi">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Apa itu Kampung Bhinneka?</h2>
-          <p>Kampung Bhineka RW 11 Kelurahan Ngagel Rejo merupakan kampung dengan konsep keanekaragaman yang ada di RW 11 Kelurahan Ngagel Rejo Surabaya. <br> Dalam rangka meningkatkan perekonomian serta kualitas hidup masyarakat sekitar RW 11 Ngagel Rejo Surabaya membuat ikon kampung dengan nama kampung Bhineka.</p>
-        </div>
-
-      </div>
-    </section><!-- End Definisi Section -->
+    <!-- End Definisi Section -->
 
     <!-- ======= Counts Section ======= -->
     <section id="demografi" class="counts">
