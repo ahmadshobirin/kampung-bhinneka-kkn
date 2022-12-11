@@ -21,42 +21,6 @@
         </div>
     </div>
 
-    {{-- Alert jika berhasil --}}
-    @if ($message = Session::get('success'))    
-        <div style="width: 30%;">
-            <div
-                class="alert alert-success alert-dismissible fade show msg"
-                role="alert"
-            >
-                {{ $message }}
-                <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-                ></button>
-            </div>
-        </div>
-    @endif
-
-    {{-- Alert jika gagal --}}
-    @if ($message = Session::get('error_msg'))    
-        <div style="width: 30%;">
-            <div
-                class="alert alert-danger alert-dismissible fade show msg"
-                role="alert"
-            >
-                {{ $message }}
-                <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-                ></button>
-            </div>
-        </div>
-    @endif
-
     <section class="section">
         <div class="card">
             <div class="card-header">
@@ -104,10 +68,24 @@
 
 @section('script')
     <script>
-        $(document).ready(function(){
-            setTimeout(function() {
-                $('.msg').fadeOut('slow');
-            }, 5000);
-        });
+        // Alert jika berhasil
+        @if ($message = Session::get('success'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#4fbe87",
+            }).showToast();
+        @endif
+
+        // ALert jika gagal
+        @if ($message = Session::get('error_msg'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#f01d1d",
+            }).showToast();
+        @endif
     </script>
 @endsection

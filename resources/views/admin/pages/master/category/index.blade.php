@@ -21,29 +21,6 @@
         </div>
     </div>
 
-    {{-- Alert jika berhasil --}}
-    @if ($message = Session::get('success'))    
-        <div id="tes"></div>
-    @endif
-
-    {{-- Alert jika gagal --}}
-    @if ($message = Session::get('error_msg'))    
-        <div style="width: 30%;">
-            <div
-                class="alert alert-danger alert-dismissible fade show msg"
-                role="alert"
-            >
-                {{ $message }}
-                <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close"
-                ></button>
-            </div>
-        </div>
-    @endif
-
     <section>
         <div class="row match-height">
             <div class="col-md-12 col-12">
@@ -100,11 +77,24 @@
 
 @section('script')
     <script>
-        Toastify({
-            text: "Data berhasil ditambahkan",
-            duration: 3000,
-            close: true,
-            backgroundColor: "#4fbe87",
-        }).showToast();
+        // Alert jika berhasil
+        @if ($message = Session::get('success'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#4fbe87",
+            }).showToast();
+        @endif
+
+        // ALert jika gagal
+        @if ($message = Session::get('error_msg'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#f01d1d",
+            }).showToast();
+        @endif
     </script>
 @endsection
