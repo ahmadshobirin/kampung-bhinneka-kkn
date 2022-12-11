@@ -11,6 +11,11 @@ class Blog extends Model
 
     protected $guarded = ['id'];
 
+    public const STATUS_CREATED   = "created";
+    public const STATUS_PUBLISHED = "published";
+    public const STATUS_UNLISTED  = "unlisted";
+    public const STATUS_ARCHIVED  = "archived";
+
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class,'user_id', 'id');

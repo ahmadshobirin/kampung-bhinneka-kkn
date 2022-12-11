@@ -23,7 +23,7 @@ class CreateBlogsTable extends Migration
             $table->string('image', 200);
             $table->string('thumbnail', 200);
             $table->bigInteger('user_id');
-            $table->boolean('status')->default(true);
+            $table->enum('status', ['created', 'published', 'unlisted', 'archived'])->default('created');
             $table->boolean('is_higlight_post')->default(false);
             $table->timestamps();
 

@@ -64,6 +64,8 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get("/blog", "Admin\BlogController@index")->name("blog.index");
     Route::get("/blog/create", "Admin\BlogController@create")->name("blog.create");
     Route::post("/blog/store", "Admin\BlogController@store")->name("blog.store");
+    Route::get("/blog/{id}/edit", "Admin\BlogController@edit")->name("blog.edit");
+    Route::put("/blog/{id}", "Admin\BlogController@update")->name("blog.update");
 });
 
 // inject command artisan

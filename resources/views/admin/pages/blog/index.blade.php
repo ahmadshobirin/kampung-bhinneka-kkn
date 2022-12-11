@@ -35,6 +35,7 @@
                                         <th>Kategory</th>
                                         <th>Thumbnail</th>
                                         <th>Dibuat Oleh</th>
+                                        <th>Unggulan</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -54,12 +55,27 @@
                                             </td>
                                             <td>{{ ucfirst($item->user->name) }}</td>
                                             <td>
+                                                @if($item->status == \App\Models\Blog::STATUS_CREATED)
                                                 <span class="badge bg-primary"> {{ $item->status }} </span>
+                                            @elseif( $item->status == \App\Models\Blog::STATUS_PUBLISHED )
+                                                <span class="badge bg-success"> {{ $item->status }} </span>
+                                            @elseif( $item->status == \App\Models\Blog::STATUS_UNLISTED )
+                                                <span class="badge bg-warning"> {{ $item->status }} </span>
+                                            @elseif( $item->status == \App\Models\Blog::STATUS_ARCHIVED )
+                                                <span class="badge bg-danger"> {{ $item->status }} </span>
+                                            @endif
+                                            </td>
+                                            <td> 
+                                                @if($item->is_higlight_post)
+                                                    <span class="badge bg-primary"> Aktif </span>
+                                                @else
+                                                    <span class="badge bg-warning"> Tidak Aktif </span>
+                                                @endif
                                             </td>
                                             <td>
-                                                {{-- <a href="{{ route('blog.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
+                                                <a href="{{ route('blog.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
-                                                </a> --}}
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -91,4 +91,31 @@ class BlogController extends Controller
 
         return redirect()->route('blog.index');
     }
+
+    public function edit($id)
+    {
+        $category = Category::get();
+        $data = Blog::where("id", $id)->firstOrFail();
+
+        return view('admin.pages.blog.edit', [ 
+            "data"     => $data,
+            "category" => $category
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            "title"        => "required|string|unique:blogs,id,".$id,
+            "description"  => "required",
+            "image_upload" => "required|image|mimes:jpeg,png,jpg,gif|max:1024",
+            "category_id"  => "required"
+        ]);
+
+        $this->collectImageAndThumbnail($request);
+
+        Blog::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+        
+        return redirect()->route('blog.index');
+    }
 }

@@ -36,8 +36,8 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form form-vertical" action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <form class="form form-vertical" action="{{ route('blog.update', ["id" => $data->id]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf @method("PUT")
                                 <div class="form-body">
                                     <div class="row">
 
@@ -47,7 +47,7 @@
                                                 <select name="category_id" class="form-select" required >
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     @foreach ($category as $item)
-                                                        <option @if( old('category_id') == $item->id ) selected @endif value="{{ $item->id }}"> 
+                                                        <option @if( $data->category_id == $item->id ) selected @endif value="{{ $item->id }}"> 
                                                             {{  ucfirst($item->name) }}</option>
                                                     @endforeach
                                                 </select>
@@ -57,7 +57,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="title">Title</label>
-                                                <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}" placeholder="Sosialisasi Bank Jelantah..."/>
+                                                <input type="text" id="title" name="title" class="form-control" value="{{ $data->title }}" placeholder="Sosialisasi Bank Jelantah..."/>
                                             </div>
                                         </div>
 
@@ -71,14 +71,14 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="pic">Deskripsi Singkat</label>
-                                                <textarea name="short_desc" id="" class="form-control">{{ old('short_desc') }}</textarea>
+                                                <textarea name="short_desc" id="" class="form-control">{{ $data->short_desc }}</textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="description">Deskripsi</label>
-                                                <textarea name="description" id="summernote" class="form-control">{{ old('description') }}</textarea>
+                                                <textarea name="description" id="summernote" class="form-control">{{ $data->description }}</textarea>
                                             </div>
                                         </div>
                                     </div>
