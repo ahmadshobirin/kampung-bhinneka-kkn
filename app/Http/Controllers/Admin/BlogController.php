@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -87,9 +88,14 @@ class BlogController extends Controller
             "short_desc"    => ($request->short_desc == null) ? Str::limit(strip_tags($request->description), 150, '...') : $request->short_desc
         ]);
 
-        Blog::create($request->except("_token", "image_upload"));
+        try{
+            Blog::create($request->except("_token", "image_upload"));
+            return redirect()->route('blog.index')->with('success', 'Data Berita berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            logger()->error("error creating blog: ".$e->getMessage());
 
-        return redirect()->route('blog.index');
+            return redirect()->route('blog.index')->with('error_msg', 'Data Berita gagal ditambahkan!');
+        }
     }
 
     public function edit($id)
@@ -114,8 +120,17 @@ class BlogController extends Controller
 
         $this->collectImageAndThumbnail($request);
 
-        Blog::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
-        
-        return redirect()->route('blog.index');
+        try {
+            Blog::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+            return redirect()->route('blog.index')->with('success', 'Data Berita berhasil diubah!');
+        } catch(\Exception $e) {
+            logger()->error("error updating blog: ".$e->getMessage());
+            return redirect()->route('blog.index')->with('error_msg', 'Data Berita gagal diubah!');
+        }
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        dd($request->all(), $id);
     }
 }

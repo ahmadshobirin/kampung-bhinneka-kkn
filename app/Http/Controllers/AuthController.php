@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    
-
     public function loginForm(Request $req)
     {
         return view('admin.pages.auth.login');
@@ -31,13 +29,12 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function index()
+    public function changePassword()
     {
         return view('admin.pages.auth.change_password');
     }
 
-    // Pengubahan password
-    public function store(Request $request)
+    public function submitChangePassword(Request $request)
     {
         try {
             $request->validate([

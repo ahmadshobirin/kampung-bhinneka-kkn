@@ -32,8 +32,8 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get('/', 'DashboardController@index')->name('home');
     Route::get('/dashboard', 'DashboardController@index')->name("dashboard");
     Route::post('/logout', 'AuthController@logout')->name('logout');
-    Route::get('/change-password', 'AuthController@index')->name('change-password');
-    Route::post('/change-password', 'AuthController@store')->name('change.password');
+    Route::get('/change-password', 'AuthController@changePassword')->name('change-password');
+    Route::post('/change-password', 'AuthController@submitChangePassword')->name('change.password');
 
     Route::middleware('superadmin')->group(function(){
         Route::get('/user', 'Admin\AdminController@index')->name('admin.index');
@@ -66,6 +66,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::post("/blog/store", "Admin\BlogController@store")->name("blog.store");
     Route::get("/blog/{id}/edit", "Admin\BlogController@edit")->name("blog.edit");
     Route::put("/blog/{id}", "Admin\BlogController@update")->name("blog.update");
+    Route::delete("/blog/{id}", "Admin\BlogController@destroy")->name("blog.destroy");
 });
 
 // inject command artisan
