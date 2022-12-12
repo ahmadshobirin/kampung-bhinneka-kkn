@@ -73,9 +73,16 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('blog.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
+                                                <a href="{{ route('blog.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary btn-sm"> 
                                                     <i class="fa fa-pencil-alt"></i> 
                                                 </a>
+
+                                                {{-- <form action="{{ route('blog.destroy', $item->id) }}" method="post">                      
+                                                    @csrf @method('DELETE')
+                                                    <button type="submit"  class="btn icon btn-danger" data-toggle="tooltip" title='Delete'>
+                                                        <i class="fa fa-trash"></i> 
+                                                    </button>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

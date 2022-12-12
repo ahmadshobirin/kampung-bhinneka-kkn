@@ -28,7 +28,7 @@ class MSMEsController extends Controller
     private function checkRequest(Request $request)
     {
         $request->validate([
-            "nib"           => "required|numeric|digits_between:10,20",
+            "nib"           => "numeric|digits_between:10,20",
             "demografis_id" => "required",
             "name"          => "required|string",
             "address"       => "required|string",

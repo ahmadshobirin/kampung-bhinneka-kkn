@@ -128,4 +128,9 @@ class BlogController extends Controller
             return redirect()->route('blog.index')->with('error_msg', 'Data Berita gagal diubah!');
         }
     }
+
+    public function destroy(Request $request, $id)
+    {
+        dd($request->all(), $id);
+    }
 }
