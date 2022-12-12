@@ -25,6 +25,8 @@
   <link href="{{ URL::asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
+  
+
   <!-- Template Main CSS File -->
   <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 
@@ -58,6 +60,8 @@
   <script src="{{ URL::asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
   <script src="{{ URL::asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ URL::asset('assets/vendor/php-email-form/validate.js') }}"></script>
+
+
 
   <!-- Template Main JS File -->
   <script src="{{ URL::asset('assets/js/main.js') }}"></script>

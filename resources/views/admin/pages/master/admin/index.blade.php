@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-striped table_admin">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -68,4 +68,28 @@
 
     </section>
 </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        // Alert jika berhasil
+        @if ($message = Session::get('success'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#4fbe87",
+            }).showToast();
+        @endif
+
+        // ALert jika gagal
+        @if ($message = Session::get('error_msg'))    
+            Toastify({
+                text: "{{ $message }}",
+                duration: 3000,
+                close: true,
+                backgroundColor: "#f01d1d",
+            }).showToast();
+        @endif
+    </script>
 @endsection
