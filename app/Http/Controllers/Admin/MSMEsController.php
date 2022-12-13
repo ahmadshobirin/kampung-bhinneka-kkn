@@ -28,13 +28,13 @@ class MSMEsController extends Controller
     private function checkRequest(Request $request)
     {
         $request->validate([
-            "nib"           => "numeric|digits_between:10,20",
+            "nib"           => "numeric|digits_between:10,20|nullable",
             "demografis_id" => "required",
             "name"          => "required|string",
             "address"       => "required|string",
             "description"   => "required",
             "business_type" => "required",
-            "image_upload"  => "image|mimes:jpeg,png,jpg,gif|max:1024",
+            "image_upload"  => "image|mimes:jpeg,png,jpg,gif|max:1024|nullable",
         ]);
 
         return true;
@@ -81,15 +81,15 @@ class MSMEsController extends Controller
 
     public function store(Request $request)
     {
+        $this->checkRequest($request);
+        $this->collectImageAndThumbnail($request);
+
         try {
-            $this->checkRequest($request);
-            $this->collectImageAndThumbnail($request);
-    
             MSMEs::create($request->except("_token"));
-    
             return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil ditambahkan!');
         } catch (\Exception $e) {
-            return redirect()->route('umkm.index')->with('error_msg', 'Data UMKM gagal ditambahkan!');
+            logger()->error($e->getMessage());
+            return redirect()->back()->with('error_msg', 'Data UMKM gagal ditambahkan!');
         }
     }
 
@@ -106,15 +106,15 @@ class MSMEsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->checkRequest($request);
+        $this->collectImageAndThumbnail($request);
+    
         try {
-            $this->checkRequest($request);
-            $this->collectImageAndThumbnail($request);
-    
             MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
-    
             return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil diubah!');
         } catch(\Exception $e) {
-            return redirect()->route('umkm.index')->with('error_msg', 'Data UMKM gagal diubah!');
+            logger()->error($e->getMessage());
+            return redirect()->back()->with('error_msg', 'Data UMKM gagal diubah!');
         }
     }
 }

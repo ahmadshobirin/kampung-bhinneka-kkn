@@ -93,8 +93,7 @@ class BlogController extends Controller
             return redirect()->route('blog.index')->with('success', 'Data Berita berhasil ditambahkan!');
         } catch (\Exception $e) {
             logger()->error("error creating blog: ".$e->getMessage());
-
-            return redirect()->route('blog.index')->with('error_msg', 'Data Berita gagal ditambahkan!');
+            return redirect()->back()->with('error_msg', 'Data Berita gagal ditambahkan!');
         }
     }
 

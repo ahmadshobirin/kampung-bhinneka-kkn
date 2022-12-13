@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             DemografiTableSeeder::class,
             CategorySeeder::class,
+            MicroSmallAndMediumEnterprisesTableSeeder::class,
         ]);
     }
 }

@@ -36,18 +36,18 @@ class AuthController extends Controller
 
     public function submitChangePassword(Request $request)
     {
+        $request->validate([
+            'current_password'      => ['required', new MatchOldPassword],
+            'new_password'          => ['required'],
+            'new_confirm_password'  => ['same:new_password'],
+        ]);
+
         try {
-            $request->validate([
-                'current_password'      => ['required', new MatchOldPassword],
-                'new_password'          => ['required'],
-                'new_confirm_password'  => ['same:new_password'],
-            ]);
-    
             User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-    
             auth()->logout();
             return redirect()->route('login')->with('success', 'Silahkan masukkan password terbaru!');
         } catch(\Exception $e) {
+            logger()->error("error update password: ".$e->getMessage());
             return redirect()->back()->with('error_msg', 'Gagal mengubah password!');
         }
     }
