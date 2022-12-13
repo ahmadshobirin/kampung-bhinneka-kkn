@@ -26,11 +26,6 @@ class CategorySeeder extends Seeder
                 "created_at" => now(),
             ],
             [
-                "name" => "UMKM",
-                "updated_at" => now(),
-                "created_at" => now(),
-            ],
-            [
                 "name" => "kolaborasi",
                 "updated_at" => now(),
                 "created_at" => now(),

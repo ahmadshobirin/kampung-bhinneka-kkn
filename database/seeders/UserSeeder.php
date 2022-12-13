@@ -17,13 +17,43 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Superadmin',
-            'email' => 'superadmin@gmail.com',
+            'email' => 'superadmin@kampungbhinneka.com',
             'password' => Hash::make('superadmin987'),
             'role' => 'superadmin'
         ]);
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@kampungbhinneka.com',
+            'password' => Hash::make('admin987'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Admin 1',
+            'email' => 'admin1@kampungbhinneka.com',
+            'password' => Hash::make('admin987'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Admin 2',
+            'email' => 'admin2@kampungbhinneka.com',
+            'password' => Hash::make('admin987'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Admin 3',
+            'email' => 'admin3@kampungbhinneka.com',
+            'password' => Hash::make('admin987'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Admin 4',
+            'email' => 'admin4@kampungbhinneka.com',
+            'password' => Hash::make('admin987'),
+            'role' => 'admin'
+        ]);
+        User::create([
+            'name' => 'Admin 5',
+            'email' => 'admin5@kampungbhinneka.com',
             'password' => Hash::make('admin987'),
             'role' => 'admin'
         ]);
