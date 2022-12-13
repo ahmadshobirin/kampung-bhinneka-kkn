@@ -8,6 +8,7 @@
         <ul>
           <li><a class="nav-link scrollto {{ ($parent === 'Beranda') ? 'active' : '' }}" href="/">Beranda</a></li>
           <li><a class="nav-link scrollto {{ ($parent === 'Demografi') ? 'active' : '' }}" href="/#demografi">Demografi</a></li>
+          <li><a class="nav-link scrollto {{ ($parent === 'Gallery') ? 'active' : '' }}" href="/#portfolio">Gallery</a></li>
           <li><a class="nav-link {{ ($parent === 'Berita') ? 'active' : '' }}" href="/berita">Berita</a></li>
           <li><a class="nav-link {{ ($parent === 'UMKM') ? 'active' : '' }}" href="/umkm">UMKM</a></li>
           <li><a class="nav-link {{ ($parent === 'penyewaan-baju-adat') ? 'active' : '' }}" href="#">Penyewaan Baju Adat</a></li>

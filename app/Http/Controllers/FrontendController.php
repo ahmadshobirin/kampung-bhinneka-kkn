@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Demografi;
+use App\Models\Gallery;
 use App\Models\MicroSmallAndMediumEnterprise;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,12 +17,14 @@ class FrontendController extends Controller
         $inhabitant = Demografi::sum('inhabitant');
         $toddler = Demografi::sum('toddler');
         $elderly = Demografi::sum('elderly');
+        $gallery = Gallery::latest()->limit(6)->get();
 
         return view("index", [
             "headOfFamily" => $headOfFamily,
             "inhabitant"   => $inhabitant,
             "toddler"      => $toddler,
             "elderly"      => $elderly,
+            "gallery"      => $gallery,
             "parent"       => "Beranda",
         ]);
     }

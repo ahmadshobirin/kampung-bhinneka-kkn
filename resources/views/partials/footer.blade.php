@@ -27,10 +27,10 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Mitra</h4>
             <div class="row">
-              <div class="col-lg-6 col-md-6">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <img src="{{ URL::asset('assets/img/UNTAG.png') }}" alt="" class="img-fluid">
               </div>
-              <div class="col-lg-6 col-md-6">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <img src="{{ URL::asset('assets/img/LPPM.png') }}" alt="" class="img-fluid">
               </div>
             </div>
@@ -51,7 +51,7 @@
           <!-- You can delete the links only if you purchased the pro version. -->
           <!-- Licensing information: https://bootstrapmade.com/license/ -->
           <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/presento-bootstrap-corporate-template/ -->
-          Developed by <a href="">Universitas 17 Agustus Surabaya</a>
+          Developed by <a href="https://www.untag-sby.ac.id/" target="_blank">Universitas 17 Agustus Surabaya</a>
         </div>
       </div>
       <div class="social-links text-center text-md-end pt-3 pt-md-0">

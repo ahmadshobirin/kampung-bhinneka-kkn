@@ -10,8 +10,11 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ URL::asset('assets/img/favicon.ico') }}" rel="icon">
-  <link href="{{ URL::asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link rel="shortcut icon" href="{{ URL::asset('assets/img/favicon.ico') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset("assets/img/apple-touch-icon.png") }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::asset("assets/img/favicon-32x32.png") }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset("assets/img/favicon-16x16.png") }}">
+  <link rel="manifest" href="{{ URL::asset("assets/img/site.webmanifest") }}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
