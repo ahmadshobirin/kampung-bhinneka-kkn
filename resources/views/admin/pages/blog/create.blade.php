@@ -70,13 +70,6 @@
 
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="pic">Deskripsi Singkat</label>
-                                                <textarea name="short_desc" id="" class="form-control">{{ old('short_desc') }}</textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-group">
                                                 <label for="description">Deskripsi</label>
                                                 <textarea name="description" id="summernote" class="form-control">{{ old('description') }}</textarea>
                                             </div>
