@@ -17,13 +17,16 @@ class MicroSmallAndMediumEnterprise extends Model
     protected $fillable = [
         "nib",
         "pic",
+        'user_id',
         "demografis_id",
         "image",
         "thumbnail",
         "name",
+        'slug',
         "address",
         "business_type",
         "description",
+        'short_desc',
         "status",
     ];
 
@@ -40,5 +43,9 @@ class MicroSmallAndMediumEnterprise extends Model
         return $this->hasOne(Demografi::class, 'id', 'demografis_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id', 'id');
+    }
 
 }

@@ -16,17 +16,21 @@ class CreateMicroSmallAndMediumEnterprisesTable extends Migration
         Schema::create('micro_small_and_medium_enterprises', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('demografis_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('nib')->nullable();
             $table->string('name');
+            $table->string('slug');
             $table->string('pic');
             $table->string('image')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('address');
             $table->string('business_type');
+            $table->text('short_desc');
             $table->text('description');
             $table->enum('status', ['created', 'published', 'unlisted', 'archived'])->default('created');
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('demografis_id')->references('id')->on('demografis');
         });
     }

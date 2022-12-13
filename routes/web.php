@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
-Route::get('/', 'FrontendController@index');;
+Route::get('/', 'FrontendController@index');
+Route::get('/umkm', "FrontendController@umkm");
 
 Route::get('/berita', function () {
     return view('news', [
@@ -11,17 +12,6 @@ Route::get('/berita', function () {
     ]);
 });
 
-Route::get('/kesenian', function () {
-    return view('kesenian', [
-        'parent' => 'Kesenian'
-    ]);
-});
-
-Route::get('/umkm', function () {
-    return view('umkm', [
-        'parent' => 'UMKM'
-    ]);
-});
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'AuthController@loginForm')->name('login');

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Demografi;
 use App\Models\MicroSmallAndMediumEnterprise as MSMEs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class MSMEsController extends Controller
 {
@@ -25,20 +27,6 @@ class MSMEsController extends Controller
         return view("admin.pages.umkm.create", [ "data" => $data ]);
     }
 
-    private function checkRequest(Request $request)
-    {
-        $request->validate([
-            "nib"           => "numeric|digits_between:10,20|nullable",
-            "demografis_id" => "required",
-            "name"          => "required|string",
-            "address"       => "required|string",
-            "description"   => "required",
-            "business_type" => "required",
-            "image_upload"  => "image|mimes:jpeg,png,jpg,gif|max:1024|nullable",
-        ]);
-
-        return true;
-    }
 
     private function collectImageAndThumbnail(Request $request)
     {
@@ -81,8 +69,23 @@ class MSMEsController extends Controller
 
     public function store(Request $request)
     {
-        $this->checkRequest($request);
+        $request->validate([
+            "nib"           => "numeric|digits_between:10,20|nullable",
+            "demografis_id" => "required",
+            "name"          => "required|string|unique:micro_small_and_medium_enterprises,id",
+            "address"       => "required|string",
+            "description"   => "required",
+            "business_type" => "required",
+            "image_upload"  => "image|mimes:jpeg,png,jpg,gif|max:1024|nullable",
+        ]);
+
         $this->collectImageAndThumbnail($request);
+
+        $request->merge([
+            "user_id"       => Auth::user()->id,
+            "slug"          => Str::slug($request->title),
+            "short_desc"    => ($request->short_desc == null) ? Str::limit(strip_tags($request->description), 150, '...') : $request->short_desc
+        ]);
 
         try {
             MSMEs::create($request->except("_token"));
@@ -106,7 +109,16 @@ class MSMEsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->checkRequest($request);
+        $request->validate([
+            "nib"           => "numeric|digits_between:10,20|nullable",
+            "demografis_id" => "required",
+            "name"          => "required|string|unique:micro_small_and_medium_enterprises,id,".$id,
+            "address"       => "required|string",
+            "description"   => "required",
+            "business_type" => "required",
+            "image_upload"  => "image|mimes:jpeg,png,jpg,gif|max:1024|nullable",
+        ]);
+
         $this->collectImageAndThumbnail($request);
     
         try {
