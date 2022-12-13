@@ -16,12 +16,10 @@ Route::get('/kesenian', function () {
         'parent' => 'Kesenian'
     ]);
 });
-
-Route::get('/umkm', function () {
-    return view('umkm', [
-        'parent' => 'UMKM'
-    ]);
-});
+// Start UMKM
+Route::get('/umkm', 'Frontend\UmkmController@index')->name('frontend.umkm');
+Route::get('/umkm-detail/{id}', 'Frontend\UmkmController@show')->name('frontend.umkm.show');
+// End UMKM
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'AuthController@loginForm')->name('login');

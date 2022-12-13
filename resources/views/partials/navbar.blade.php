@@ -6,11 +6,11 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto {{ ($parent === 'Beranda') ? 'active' : '' }}" href="/">Beranda</a></li>
-          <li><a class="nav-link scrollto {{ ($parent === 'Demografi') ? 'active' : '' }}" href="/#demografi">Demografi</a></li>
-          <li><a class="nav-link {{ ($parent === 'Berita') ? 'active' : '' }}" href="/berita">Berita</a></li>
-          <li><a class="nav-link {{ ($parent === 'UMKM') ? 'active' : '' }}" href="/umkm">UMKM</a></li>
-          <li><a class="nav-link {{ ($parent === 'penyewaan-baju-adat') ? 'active' : '' }}" href="#">Penyewaan Baju Adat</a></li>
+          <li><a class="nav-link scrollto @yield('Beranda')" href="/">Beranda</a></li>
+          <li><a class="nav-link scrollto @yield('Demografi')" href="/#demografi">Demografi</a></li>
+          <li><a class="nav-link @yield('Berita')" href="/berita">Berita</a></li>
+          <li><a class="nav-link @yield('UMKM')" href="/umkm">UMKM</a></li>
+          <li><a class="nav-link @yield('Penyewaan')" href="#">Penyewaan Baju Adat</a></li>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       @auth
