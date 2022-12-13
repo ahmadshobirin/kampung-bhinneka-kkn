@@ -77,7 +77,7 @@
                 </li>
                 <li class="sidebar-item @yield('nav-gallery')">
                     <a href="{{ route('gallery.index') }}" class='sidebar-link'>
-                        <i class="fa fa-photo"></i>
+                        <i class="bi bi-image-fill"></i>
                         <span>Galeri</span>
                     </a>
                 </li>

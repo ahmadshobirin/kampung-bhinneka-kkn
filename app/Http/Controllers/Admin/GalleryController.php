@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Auth;
 use Image;
 
 class GalleryController extends Controller
@@ -15,19 +15,19 @@ class GalleryController extends Controller
     {
         $data = Gallery::all();
 
-        return view('admin.pages.master.gallery.index', compact('data'));
+        return view('admin.pages.gallery.index', compact('data'));
     }
 
     public function create()
     {
-        return view('admin.pages.master.gallery.create');
+        return view('admin.pages.gallery.create');
     }
 
     public function store(Request $req)
     {
         $req->validate([
             'title'         => 'required|min:5',
-            'image_upload'  => 'required|file|mimes:jpeg,png,jpg,svg,pdf,doc,docx,xls,xlsx|max:10000',
+            'image_upload'  => 'required|file|mimes:jpeg,png,jpg,svg|max:1024',
             'description'   => 'required|min:5'
         ]);
 
@@ -86,7 +86,7 @@ class GalleryController extends Controller
     {
         $data = Gallery::orderBy('id', 'desc')->where('id', $id)->firstOrFail();
 
-        return view('admin.pages.master.gallery.edit')->with('data', $data);
+        return view('admin.pages.gallery.edit')->with('data', $data);
     }
 
     public function destroy(Request $request, $id)

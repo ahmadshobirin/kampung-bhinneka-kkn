@@ -1,7 +1,10 @@
 @extends('admin.layouts.app_dashboard')
 @section("nav-master1", 'active')
-@section("nav-master", 'block')
 @section("nav-gallery", 'active')
+
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/summernote.css') }}" />
+@endsection
 
 @section('content')
 <div class="page-heading">  
@@ -45,14 +48,19 @@
                                                 <label for="name">Judul</label>
                                                 <input type="text" id="title" name="title" class="form-control" value="{{ old('title')}}"/>
                                             </div>
+                                        </div>
+
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <label for="name">Foto</label>
-                                                <input type="file" class="image" name="image_upload" class="form-control" value="{{ old('image')}}">
+                                                <input type="file" name="image_upload" class="form-control image" value="{{ old('image')}}">
+                                                <img id="imgPreview" src="{{ url('assets/images/no-image.jpg') }}" class="mt-2 mb-2" style="height: 170px">
                                             </div>
-                                            <img id="imgPreview" src="{{ url('assets/images/no-image.jpg') }}" class="mt-2 mb-2" style="height: 170px">
+                                        </div>
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <label for="name">Deskripsi</label>
-                                                <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ old('description')}}</textarea>
+                                                <textarea name="description" id="summernote" class="form-control">{{ old('description')}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -73,16 +81,31 @@
 </div>
 @endsection
 @section('script')
-<script>
-    $('.image').change(function(){
-        const file = this.files[0];
-        if (file){
-          let reader = new FileReader();
-          reader.onload = function(event){
-            $('#imgPreview').attr('src', event.target.result);
-          }
-          reader.readAsDataURL(file);
-        }
-    });
-</script>
+    <script src="{{ URL::asset('assets/extensions/summernote/summernote-lite.min.js') }}"></script>
+    <script>
+        $('.image').change(function(){
+            const file = this.files[0];
+            if (file){
+                let reader = new FileReader();
+                reader.onload = function(event){
+                    $('#imgPreview').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        $("#summernote").summernote({
+            tabsize: 2,
+            height: 120,
+            placeholder: "description",
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['view', ['codeview']],
+            ],
+        });
+    </script>
 @endsection

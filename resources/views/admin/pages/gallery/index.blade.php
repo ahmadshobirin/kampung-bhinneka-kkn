@@ -1,7 +1,6 @@
 @extends('admin.layouts.app_dashboard')
-@section("nav-master1", 'active')
-@section("nav-master", 'block')
 @section("nav-gallery", 'active')
+ 
 @section('content')
 <div class="page-heading">
     <div class="page-title">
@@ -38,7 +37,6 @@
                                         <th>No</th>
                                         <th>Judul</th>
                                         <th>Foto</th>
-                                        <th>Deksripsi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -56,7 +54,6 @@
                                                     -
                                                 @endif
                                             </td>
-                                            <td>{{ $item->description }}</td>
                                             <td>
                                                 <a href="{{ route('gallery.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
