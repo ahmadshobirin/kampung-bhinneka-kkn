@@ -12,7 +12,7 @@
 				</div>
 		</section><!-- End Breadcrumbs -->
 
-		<section>
+		<section class="blog">
 				<div class="container" data-aos="fade-up">
 						<div class="row">
 							<div class="col-lg-8 entries">
