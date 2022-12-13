@@ -6,12 +6,8 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/', 'FrontendController@index');
 Route::get('/umkm', "FrontendController@umkm")->name("fe.umkm");
 Route::get('/umkm/{slug}', "FrontendController@detailUmkm")->name("fe.umkm.detail");
-
-Route::get('/berita', function () {
-    return view('news', [
-        'parent' => 'Berita'
-    ]);
-});
+Route::get('/berita', "FrontendController@news")->name("fe.news");
+Route::get('/berita/{slug}', "FrontendController@newsDetail")->name("fe.news.detail");
 
 
 Route::middleware(['guest'])->group(function () {
