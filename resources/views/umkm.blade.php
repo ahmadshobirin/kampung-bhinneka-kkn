@@ -4,7 +4,6 @@
 		<!-- ======= Breadcrumbs ======= -->
 		<section class="breadcrumbs">
 				<div class="container">
-
 						<ol>
 								<li><a href="/">Beranda</a></li>
 								<li>{{ $parent }}</li>
@@ -32,23 +31,23 @@
 													@endif
 												</div>
 												<h2 class="entry-title">
-													<a href="blog-single.html">{{ ucfirst($item->name) }}</a>
+													<a href="{{ route("fe.umkm.detail", $item->slug) }}">{{ ucfirst($item->name) }}</a>
 												</h2>
 												<div class="entry-meta">
 														<ul>
 																<li class="d-flex align-items-center"><i class="bi bi-pencil"></i> <a
-																				href="blog-single.html">{{ ucfirst($item->user->name) }}</a></li>
+																				href="{{ route("fe.umkm.detail", $item->slug) }}">{{ ucfirst($item->user->name) }}</a></li>
 																<li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
-																				href="blog-single.html"><time datetime="2020-01-01">{{ $item->updated_at->diffForHumans() }}</time></a></li>
+																				href="{{ route("fe.umkm.detail", $item->slug) }}"><time datetime="2020-01-01">{{ $item->updated_at->diffForHumans() }}</time></a></li>
 																<li class="d-flex align-items-center"><i class="bi bi-tag"></i> <a
-																				href="blog-single.html"> {{ ucfirst($item->business_type) }}</a></li>
+																				href="{{ route("fe.umkm.detail", $item->slug) }}"> {{ ucfirst($item->business_type) }}</a></li>
 														</ul>
 												</div>
 
 												<div class="entry-content">
 														<p> {{$item->short_desc}}</p>
 														<div class="read-more">
-															<a href="blog-single.html">Selengkapnya...</a>
+															<a href="{{ route("fe.umkm.detail", $item->slug) }}">Selengkapnya...</a>
 														</div>
 												</div>
 

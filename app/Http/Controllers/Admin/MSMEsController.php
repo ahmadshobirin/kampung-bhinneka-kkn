@@ -83,7 +83,7 @@ class MSMEsController extends Controller
 
         $request->merge([
             "user_id"       => Auth::user()->id,
-            "slug"          => Str::slug($request->title),
+            "slug"          => Str::slug($request->name),
             "short_desc"    => ($request->short_desc == null) ? Str::limit(strip_tags($request->description), 150, '...') : $request->short_desc
         ]);
 
@@ -120,6 +120,12 @@ class MSMEsController extends Controller
         ]);
 
         $this->collectImageAndThumbnail($request);
+
+        $request->merge([
+            "user_id"       => Auth::user()->id,
+            "slug"          => Str::slug($request->name),
+            "short_desc"    => ($request->short_desc == null) ? Str::limit(strip_tags($request->description), 150, '...') : $request->short_desc
+        ]);
     
         try {
             MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload"));

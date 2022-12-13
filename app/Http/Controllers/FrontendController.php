@@ -33,4 +33,14 @@ class FrontendController extends Controller
             'parent' => 'UMKM'
         ]);
     }
+
+    public function detailUmkm($slug)
+    {
+        $item = MicroSmallAndMediumEnterprise::where('slug', $slug)->first();
+        
+        return view('umkm-detail', [
+            'item' => $item,
+            'parent' => 'UMKM'
+        ]);
+    }
 }
