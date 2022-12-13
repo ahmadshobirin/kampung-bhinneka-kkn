@@ -25,15 +25,16 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            "name" => "required|string|unique:categories",
+        ]);
+
         try {
-            $request->validate([
-                "name" => "required|string|unique:categories,id",
-            ]);
-    
             Category::create($request->except("_token"));
             return redirect()->route("category.index")->with('success', 'Data kategori berhasil ditambahkan!');
         } catch(\Exception $e) {
-            return redirect()->route("category.index")->with('error_msg', 'Data kategori gagal ditambahkan!');
+            logger()->error($e->getMessage());
+            return redirect()->back()->with('error_msg', 'Data kategori gagal ditambahkan!');
         }
     }
 
@@ -48,32 +49,28 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            "name" => "required|string|unique:categories,id," . $id,
+        ]);
+
         try {
-            $request->validate([
-                "name" => "required|string|unique:categories,id," . $id,
-            ]);
-            
             $category = Category::find($id);
-            if (strtolower($category->name) != strtolower($request->name)){
-                BlogCategory::where("category_id", $id)->update(['category' => $request->name]);
-            }
-    
             $category->update($request->except('_token'));
             return redirect()->route("category.index")->with('success', 'Data kategori berhasil diubah!');
         } catch (\Exception $e) {
-            return redirect()->route("category.index")->with('error_msg', 'Data kategori gagal diubah!');
+            logger()->error($e->getMessage());
+            return redirect()->back()->with('error_msg', 'Data kategori gagal diubah!');
         }
     }
 
     public function destroy($id)
     {
-        $used = BlogCategory::where('category_id', $id)->count();
-        if ($used != 0){
-            return redirect()->back()->with('message', 'Data sedang dipakai untuk sementara tidak bisa dihapus. <br> Silakan cek kembali');
-        }
-
         Category::where('id',$id)->delete();
-        return redirect()->route("category.index");
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Kategori Berhasil Dihapus!.',
+        ]);
     }
 
 }

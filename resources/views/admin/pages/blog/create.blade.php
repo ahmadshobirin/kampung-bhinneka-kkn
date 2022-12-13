@@ -48,7 +48,7 @@
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     @foreach ($category as $item)
                                                         <option @if( old('category_id') == $item->id ) selected @endif value="{{ $item->id }}"> 
-                                                            {{  ucfirst($item->name) }}</option>
+                                                            {{  $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -65,13 +65,6 @@
                                             <div class="form-group">
                                                 <label for="image_upload">Banner Image</label>
                                                 <input class="form-control" type="file" name="image_upload" id="image_upload" accept="image/png, image/jpeg">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="pic">Deskripsi Singkat</label>
-                                                <textarea name="short_desc" id="" class="form-control">{{ old('short_desc') }}</textarea>
                                             </div>
                                         </div>
 

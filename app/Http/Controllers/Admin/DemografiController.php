@@ -30,7 +30,8 @@ class DemografiController extends Controller
     
             return redirect()->route('demografi.index')->with('success', 'Data demografi berhasil diubah!');
         } catch(\Exception $e) {
-            return redirect()->route('demografi.index')->with('error_msg', 'Data demografi gagal diubah!');
+            logger()->error($e->getMessage());
+            return redirect()->back()->with('error_msg', 'Data demografi gagal diubah!');
         }
     }
 }

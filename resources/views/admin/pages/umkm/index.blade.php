@@ -73,6 +73,9 @@
                                                 <a href="{{ route('umkm.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn icon btn-danger btn-delete" data-id="{{ $item->id }}"> 
+                                                    <i class="fa fa-trash"></i> 
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -111,5 +114,42 @@
                 backgroundColor: "#f01d1d",
             }).showToast();
         @endif
+
+        // Delete Data Kategori
+        $(".btn-delete").click(function(){
+            var id = $(this).data("id");
+            Swal.fire({
+                icon: "warning",
+                title: "Apakah anda yakin?",
+                text: "ingin menghapus data UMKM ini!",
+                showCancelButton: true,
+                cancelButtonText: 'TIDAK',
+                confirmButtonText: 'YA, HAPUS!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax(
+                    {
+                        url: "umkm/"+id,
+                        type: 'DELETE',
+                        data: {
+                            "id": id,
+                            "_token": '{{ csrf_token() }}',
+                        },
+                        success: function (){
+                            Swal.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: 'Data UMKM berhasil dihapus!',
+                                showConfirmButton: true,
+                                timer: 3000
+                            });
+
+                            // $(`#index_${category_id}`).remove();
+                            location.reload(true);
+                        }
+                    });
+                }
+            })
+        });
     </script>
 @endsection

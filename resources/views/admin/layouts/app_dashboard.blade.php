@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/extensions/simple-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/simple-datatables.css') }}">
+
+    <link rel="stylesheet" href="{{ URL::asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
     @yield('css')
 </head>
 <body>
@@ -64,7 +66,9 @@
     <script src="{{ URL::asset('assets/extensions/jquery/jquery.min.js') }}"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
     <script src="{{ URL::asset('assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
-    {{-- <script src="{{ URL::asset('assets/js/pages/simple-datatables.js') }}"></script> --}}
+
+    <script src="{{ URL::asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+    {{-- <script src="{{ URL::asset('assets/js/pages/sweetalert2.js') }}"></script> --}}
 
     <script>
         // Alert jika berhasil

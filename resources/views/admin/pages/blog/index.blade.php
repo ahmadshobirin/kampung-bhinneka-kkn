@@ -76,6 +76,9 @@
                                                 <a href="{{ route('blog.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary btn-sm"> 
                                                     <i class="fa fa-pencil-alt"></i> 
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn icon btn-danger btn-delete" data-id="{{ $item->id }}"> 
+                                                    <i class="fa fa-trash"></i> 
+                                                </a>
 
                                                 {{-- <form action="{{ route('blog.destroy', $item->id) }}" method="post">                      
                                                     @csrf @method('DELETE')
@@ -98,4 +101,46 @@
         </div>
     </section>
 </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+        // Delete Data Kategori
+        $(".btn-delete").click(function(){
+            var id = $(this).data("id");
+            Swal.fire({
+                icon: "warning",
+                title: "Apakah anda yakin?",
+                text: "ingin menghapus data berita ini!",
+                showCancelButton: true,
+                cancelButtonText: 'TIDAK',
+                confirmButtonText: 'YA, HAPUS!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax(
+                    {
+                        url: "blog/"+id,
+                        type: 'DELETE',
+                        data: {
+                            "id": id,
+                            "_token": '{{ csrf_token() }}',
+                        },
+                        success: function (){
+                            Swal.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: 'Data berita berhasil dihapus!',
+                                showConfirmButton: true,
+                                timer: 3000
+                            });
+
+                            // $(`#index_${category_id}`).remove();
+                            location.reload(true);
+                        }
+                    });
+                }
+            })
+        });
+    </script>
 @endsection

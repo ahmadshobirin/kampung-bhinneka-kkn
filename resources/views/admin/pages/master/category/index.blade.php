@@ -32,7 +32,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableCategory">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -57,6 +57,9 @@
                                                 <a href="{{ route('category.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn icon btn-danger btn-delete" data-id="{{ $item->id }}"> 
+                                                    <i class="fa fa-trash"></i> 
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -69,4 +72,46 @@
         </div>
     </section>
 </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+        // Delete Data Kategori
+        $(".btn-delete").click(function(){
+            var id = $(this).data("id");
+            Swal.fire({
+                icon: "warning",
+                title: "Apakah anda yakin?",
+                text: "ingin menghapus data kategori ini!",
+                showCancelButton: true,
+                cancelButtonText: 'TIDAK',
+                confirmButtonText: 'YA, HAPUS!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax(
+                    {
+                        url: "category/"+id,
+                        type: 'DELETE',
+                        data: {
+                            "id": id,
+                            "_token": '{{ csrf_token() }}',
+                        },
+                        success: function (){
+                            Swal.fire({
+                                type: 'success',
+                                icon: 'success',
+                                title: 'Data kategori berhasil dihapus!',
+                                showConfirmButton: true,
+                                timer: 3000
+                            });
+
+                            // $(`#index_${category_id}`).remove();
+                            location.reload(true);
+                        }
+                    });
+                }
+            })
+        });
+    </script>
 @endsection
