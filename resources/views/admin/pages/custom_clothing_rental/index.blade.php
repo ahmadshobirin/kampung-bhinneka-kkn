@@ -1,20 +1,19 @@
 @extends('admin.layouts.app_dashboard')
-@section("nav-master1", 'active')
-@section("nav-master", 'block')
-@section("nav-category", 'active')
+@section("nav-clothing", 'active')
+
 @section('content')
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Master</h3>
-                <p class="text-subtitle text-muted">Kategori</p>
+                <h3>Penyewaan Baju Adat</h3>
+                {{-- <p class="text-subtitle text-muted"></p> --}}
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Master</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kategori</li>
+                        <li class="breadcrumb-item"><a href="#">Penyewaan Baju Adat</a></li>
+                        {{-- <li class="breadcrumb-item active" aria-current="page"></li> --}}
                     </ol>
                 </nav>
             </div>
@@ -26,18 +25,20 @@
             <div class="col-md-12 col-12">
                 <div class="card">
                     <div class="card-header">
-                        <a href="{{ route('category.create') }}" class="btn btn-primary">
+                        <a href="{{ route('clothing.create') }}" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover" id="tableCategory">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Status</th>
+                                        <th>Gambar</th>
+                                        <th>Harga</th>
+                                        <th>Deskripsi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -47,14 +48,18 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ ucfirst($item->name) }}</td>
                                             <td>
-                                                @if($item->status)
-                                                    <span class="badge bg-primary"> Aktif </span>
+                                                @if($item->image != null)
+                                                    <a href="{{ asset('uploads/clothing/'.$item->image) }}" target="_blank">
+                                                        <img src="{{ URL::asset('uploads/clothing/'.$item->image) }}" alt="" style="max-height: 120px; max-width: 120px">
+                                                    </a>
                                                 @else
-                                                    <span class="badge bg-danger"> Tidak Aktif </span>
+                                                    -
                                                 @endif
                                             </td>
+                                            <td>{{ "Rp ". number_format($item->price, 2) }}</td>
+                                            <td>{{ $item->description }}</td>
                                             <td>
-                                                <a href="{{ route('category.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
+                                                <a href="{{ route('clothing.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
                                                 </a>
                                                 <a href="javascript:void(0)" class="btn icon btn-danger btn-delete" data-id="{{ $item->id }}"> 
@@ -75,15 +80,14 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript">
-
+    <script>
         // Delete Data Kategori
         $(".btn-delete").click(function(){
             var id = $(this).data("id");
             Swal.fire({
                 icon: "warning",
                 title: "Apakah anda yakin?",
-                text: "ingin menghapus data kategori ini!",
+                text: "ingin menghapus data ini!",
                 showCancelButton: true,
                 cancelButtonText: 'TIDAK',
                 confirmButtonText: 'YA, HAPUS!'
@@ -91,7 +95,7 @@
                 if (result.isConfirmed) {
                     $.ajax(
                     {
-                        url: "category/"+id,
+                        url: "clothing/"+id,
                         type: 'DELETE',
                         data: {
                             "id": id,
