@@ -75,6 +75,12 @@
                         <span>Berita</span>
                     </a>
                 </li>
+                <li class="sidebar-item @yield('nav-gallery')">
+                    <a href="{{ route('gallery.index') }}" class='sidebar-link'>
+                        <i class="bi bi-image-fill"></i>
+                        <span>Galeri</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Authentication</li>
                 <li class="sidebar-item @yield('nav-changePassword')">
                     <a href="{{ route('change-password') }}" class="sidebar-link">

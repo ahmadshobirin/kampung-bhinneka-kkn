@@ -22,7 +22,7 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get('/change-password', 'AuthController@changePassword')->name('change-password');
     Route::post('/change-password', 'AuthController@submitChangePassword')->name('change.password');
 
-    Route::middleware('superadmin')->group(function(){
+    Route::middleware('superadmin')->group(function () {
         Route::get('/user', 'Admin\AdminController@index')->name('admin.index');
         Route::get('/user/create', 'Admin\AdminController@create')->name('admin.create');
         Route::post('/user', 'Admin\AdminController@store')->name('admin.post');
@@ -56,6 +56,13 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get("/blog/{id}/edit", "Admin\BlogController@edit")->name("blog.edit");
     Route::put("/blog/{id}", "Admin\BlogController@update")->name("blog.update");
     Route::delete("/blog/{id}", "Admin\BlogController@destroy")->name("blog.destroy");
+
+    Route::get("/gallery", "Admin\GalleryController@index")->name("gallery.index");
+    Route::get("/gallery/create", "Admin\GalleryController@create")->name("gallery.create");
+    Route::post("/gallery/store", "Admin\GalleryController@store")->name("gallery.store");
+    Route::get("/gallery/{id}/edit", "Admin\GalleryController@edit")->name("gallery.edit");
+    Route::put("/gallery/{id}", "Admin\GalleryController@update")->name("gallery.update");
+    Route::delete("/gallery/{id}", "Admin\GalleryController@destroy")->name("gallery.destroy");
 });
 
 // inject command artisan

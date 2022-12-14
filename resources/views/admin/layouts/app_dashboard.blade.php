@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/main/app.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/main/app-dark.css') }}">
     <link rel="shortcut icon" href="{{ URL::asset('assets/img/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::asset("assets/img/apple-touch-icon.png") }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ URL::asset("assets/img/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset("assets/img/favicon-16x16.png") }}">
+    <link rel="manifest" href="{{ URL::asset("assets/img/site.webmanifest") }}">
     
     <link rel="stylesheet" href="{{ URL::asset('assets/css/pages/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/css/shared/iconly.css') }}">
