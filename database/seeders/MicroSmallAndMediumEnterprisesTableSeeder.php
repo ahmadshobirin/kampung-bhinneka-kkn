@@ -33,7 +33,7 @@ class MicroSmallAndMediumEnterprisesTableSeeder extends Seeder
                 'business_type' => 'Jasa Kesenian',
                 'short_desc' => 'Sanggar tari BRATANG kids di bentuk oleh Andwar Kinarya di RW 11 Bratang Perintis Raya Kelurahan Ngagelrejo Surabaya',
                 'description' => '<p>Sanggar tari BRATANG kids di bentuk oleh Andwar Kinarya di RW 11 Bratang Perintis Raya Kelurahan Ngagelrejo Surabaya. Sanggar ini dibentuk untuk mengajarkan peserta didiknya di Rw.11 Ngagelrejo agar mahir dalam manari. Adapun peserta didiknya sebagian besar merupakan anak-anak usia Sekolah Dasar (SD). Sanggar BRATANG kids juga telah sering tampil di beberapa Event di Kota Surabaya.<br><br>Narahubung<br>Kak Anwar&nbsp;081336862975<br></p>',
-                'status' => 'created',
+                'status' => 'published',
                 'created_at' => '2022-12-13 08:26:41',
                 'updated_at' => '2022-12-13 08:26:53',
             ),

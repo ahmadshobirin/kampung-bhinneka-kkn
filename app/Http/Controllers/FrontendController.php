@@ -31,7 +31,7 @@ class FrontendController extends Controller
 
     public function umkm()
     {
-        $data = MicroSmallAndMediumEnterprise::latest()->paginate(10);
+        $data = MicroSmallAndMediumEnterprise::where("status", MicroSmallAndMediumEnterprise::STATUS_PUBLISHED)->latest()->paginate(10);
         
         return view('umkm', [
             'data' => $data,
@@ -41,7 +41,12 @@ class FrontendController extends Controller
 
     public function detailUmkm($slug)
     {
-        $item = MicroSmallAndMediumEnterprise::where('slug', $slug)->first();
+        $item = MicroSmallAndMediumEnterprise::where('slug', $slug)
+            ->whereIn("status", [
+                MicroSmallAndMediumEnterprise::STATUS_PUBLISHED,
+                MicroSmallAndMediumEnterprise::STATUS_UNLISTED,
+            ])
+            ->firstOrFail();
         
         return view('umkm-detail', [
             'item' => $item,
@@ -51,11 +56,12 @@ class FrontendController extends Controller
 
     public function news()
     {
-        $anotherNews = Blog::inRandomOrder()->limit(5)->get();
-        $blog = Blog::latest()->paginate(5);
+        $blog = Blog::where("status", Blog::STATUS_PUBLISHED)->latest()->paginate(5);
+        $anotherNews = Blog::inRandomOrder()->where("status", Blog::STATUS_PUBLISHED)->limit(5)->get();
         $countBlogByCategories = DB::select("select count(b.id) as count, c.name
             from blogs b 
             join categories c on c.id = b.category_id 
+            where b.status = 'published'
             group by c.id, c.name");
 
         return view("news",[
@@ -68,11 +74,17 @@ class FrontendController extends Controller
 
     public function newsDetail($slug)
     {
-        $blog = Blog::where("slug", $slug)->firstOrFail();
-        $anotherNews = Blog::inRandomOrder()->limit(5)->get();
+        $blog = Blog::where("slug", $slug)
+            ->whereIn("status", [
+                Blog::STATUS_PUBLISHED,
+                Blog::STATUS_UNLISTED,
+            ])
+            ->firstOrFail();
+        $anotherNews = Blog::where("status", Blog::STATUS_PUBLISHED)->inRandomOrder()->limit(5)->get();
         $countBlogByCategories = DB::select("select count(b.id) as count, c.name
             from blogs b 
             join categories c on c.id = b.category_id 
+            where b.status = 'published'
             group by c.id, c.name");
 
         return view("news-detail",[
