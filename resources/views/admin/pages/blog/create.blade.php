@@ -48,7 +48,7 @@
                                                     <option value="" selected disabled>Pilih Kategori</option>
                                                     @foreach ($category as $item)
                                                         <option @if( old('category_id') == $item->id ) selected @endif value="{{ $item->id }}"> 
-                                                            {{  ucfirst($item->name) }}</option>
+                                                            {{  $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

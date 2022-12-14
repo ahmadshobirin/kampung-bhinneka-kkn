@@ -17,6 +17,7 @@ class BlogController extends Controller
     {
         $data = Blog::with('user', 'category')->latest()->paginate(10);
 
+
         return view('admin.pages.blog.index', [ 
             "data" => $data
         ]);
@@ -73,7 +74,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "title"        => "required|string|unique:blogs,id",
+            "title"        => "required|string|unique:blogs",
             "description"  => "required",
             "image_upload" => "required|image|mimes:jpeg,png,jpg,gif|max:1024",
             "category_id"  => "required"
@@ -110,7 +111,7 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "title"        => "required|string|unique:blogs,id,".$id,
+            "title"        => "required|string|unique:blogs",
             "description"  => "required",
             "image_upload" => "required|image|mimes:jpeg,png,jpg,gif|max:1024",
             "category_id"  => "required"
@@ -129,6 +130,11 @@ class BlogController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        dd($request->all(), $id);
+        Blog::where('id',$id)->delete();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berita Berhasil Dihapus!.',
+        ]);
     }
 }

@@ -41,12 +41,14 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::post('/umkm', 'Admin\MSMEsController@store')->name("umkm.store");
     Route::get('/umkm/{id}/edit', 'Admin\MSMEsController@edit')->name("umkm.edit");
     Route::put('/umkm/{id}', 'Admin\MSMEsController@update')->name("umkm.update");
+    Route::delete("/umkm/{id}", 'Admin\MSMEsController@destroy')->name('umkm.destroy');
 
     Route::get("/category", 'Admin\CategoryController@index')->name('category.index');
     Route::get("/category/create", 'Admin\CategoryController@create')->name('category.create');
     Route::post("/category", 'Admin\CategoryController@store')->name('category.store');
     Route::get("/category/{id}/edit", 'Admin\CategoryController@edit')->name('category.edit');
     Route::put("/category/{id}", 'Admin\CategoryController@update')->name('category.update');
+    Route::delete("/category/{id}", 'Admin\CategoryController@destroy')->name('category.destroy');
 
     Route::get("/blog", "Admin\BlogController@index")->name("blog.index");
     Route::get("/blog/create", "Admin\BlogController@create")->name("blog.create");

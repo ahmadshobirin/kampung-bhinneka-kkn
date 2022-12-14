@@ -1,5 +1,7 @@
 @extends('partials.main')
 
+@section('UMKM', 'active')
+
 @section('main_content')
 		<!-- ======= Breadcrumbs ======= -->
 		<section class="breadcrumbs">

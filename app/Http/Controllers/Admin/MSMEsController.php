@@ -72,7 +72,7 @@ class MSMEsController extends Controller
         $request->validate([
             "nib"           => "numeric|digits_between:10,20|nullable",
             "demografis_id" => "required",
-            "name"          => "required|string|unique:micro_small_and_medium_enterprises,id",
+            "name"          => "required|string|unique:micro_small_and_medium_enterprises",
             "address"       => "required|string",
             "description"   => "required",
             "business_type" => "required",
@@ -112,7 +112,7 @@ class MSMEsController extends Controller
         $request->validate([
             "nib"           => "numeric|digits_between:10,20|nullable",
             "demografis_id" => "required",
-            "name"          => "required|string|unique:micro_small_and_medium_enterprises,id,".$id,
+            "name"          => "required|string|unique:micro_small_and_medium_enterprises,",
             "address"       => "required|string",
             "description"   => "required",
             "business_type" => "required",
@@ -134,5 +134,15 @@ class MSMEsController extends Controller
             logger()->error($e->getMessage());
             return redirect()->back()->with('error_msg', 'Data UMKM gagal diubah!');
         }
+    }
+
+    public function destroy($id)
+    {
+        MSMEs::where('id',$id)->delete();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data UMKM Berhasil Dihapus!.',
+        ]);
     }
 }

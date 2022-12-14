@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required|string|unique:categories,id",
+            "name" => "required|string|unique:categories",
         ]);
 
         try {
@@ -66,7 +66,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::where('id',$id)->delete();
-        return redirect()->route("category.index");
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Kategori Berhasil Dihapus!.',
+        ]);
     }
 
 }
