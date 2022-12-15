@@ -121,7 +121,7 @@ class CustomClothingRentalController extends Controller
             }
         }
 
-        CustomClothingRental::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+        CustomClothingRental::where('id', $id)->update($request->except("_token", "_method", "image_upload", "url"));
 
         return redirect()->route('clothing.index')->with('success', 'Data berhasil dipudate.');
     }

@@ -43,7 +43,7 @@ class GalleryController extends Controller
             "created_by_id" => Auth::user()->id,
         ]);
 
-        Gallery::create($req->except("_token", "image_upload"));
+        Gallery::create($req->except("_token", "image_upload", "url"));
 
         return redirect()->route('gallery.index')->with('success', 'Data berhasil ditambahkan.');
     }

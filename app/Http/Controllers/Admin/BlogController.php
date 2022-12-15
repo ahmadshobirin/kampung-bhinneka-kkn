@@ -120,7 +120,7 @@ class BlogController extends Controller
         $this->collectImageAndThumbnail($request);
 
         try {
-            Blog::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+            Blog::where('id', $id)->update($request->except("_token", "_method", "image_upload", "url"));
             return redirect()->route('blog.index')->with('success', 'Data Berita berhasil diubah!');
         } catch(\Exception $e) {
             logger()->error("error updating blog: ".$e->getMessage());
