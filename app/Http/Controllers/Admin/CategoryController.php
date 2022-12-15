@@ -30,7 +30,7 @@ class CategoryController extends Controller
         ]);
 
         try {
-            Category::create($request->except("_token"));
+            Category::create($request->except("_token", "url"));
             return redirect()->route("category.index")->with('success', 'Data kategori berhasil ditambahkan!');
         } catch(\Exception $e) {
             logger()->error($e->getMessage());

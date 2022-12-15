@@ -59,7 +59,7 @@ class AdminController extends Controller
         ]);
 
         try {
-            User::where('id', $id)->update($request->except('_token', '_method'));
+            User::where('id', $id)->update($request->except('_token', '_method', "url"));
             return redirect()->route('admin.index')->with('success', 'Data admin berhasil diubah!');
         } catch(\Exception $e) {
             logger()->error("error update blog: ".$e->getMessage());
