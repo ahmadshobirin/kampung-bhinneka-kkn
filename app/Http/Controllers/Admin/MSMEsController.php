@@ -128,7 +128,7 @@ class MSMEsController extends Controller
         ]);
     
         try {
-            MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload"));
+            MSMEs::where('id', $id)->update($request->except("_token", "_method", "image_upload", "url"));
             return redirect()->route('umkm.index')->with('success', 'Data UMKM berhasil diubah!');
         } catch(\Exception $e) {
             logger()->error($e->getMessage());
