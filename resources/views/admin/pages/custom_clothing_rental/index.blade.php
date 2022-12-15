@@ -57,7 +57,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ "Rp ". number_format($item->price, 2) }}</td>
-                                            <td>{{ $item->description }}</td>
+                                            <td>{!! $item->description !!}</td>
                                             <td>
                                                 <a href="{{ route('clothing.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 

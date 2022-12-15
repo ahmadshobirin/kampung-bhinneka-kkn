@@ -11,7 +11,7 @@
           <li><a class="nav-link scrollto {{ ($parent === 'Gallery') ? 'active' : '' }}" href="/#portfolio">Gallery</a></li>
           <li><a class="nav-link {{ ($parent === 'Berita') ? 'active' : '' }}" href="/berita">Berita</a></li>
           <li><a class="nav-link {{ ($parent === 'UMKM') ? 'active' : '' }}" href="/umkm">UMKM</a></li>
-          <li><a class="nav-link {{ ($parent === 'penyewaan-baju-adat') ? 'active' : '' }}" href="#">Penyewaan Baju Adat</a></li>
+          <li><a class="nav-link {{ ($parent === 'Penyewaan Baju Adat') ? 'active' : '' }}" href="/clothing">Penyewaan Baju Adat</a></li>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       @auth
