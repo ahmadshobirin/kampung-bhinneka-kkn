@@ -81,6 +81,12 @@
                         <span>Galeri</span>
                     </a>
                 </li>
+                <li class="sidebar-item @yield('nav-clothing')">
+                    <a href="{{ route('clothing.index') }}" class='sidebar-link'>
+                        <i class="fa fa-user-injured"></i>
+                        <span>Penyewaan Baju Adat</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Authentication</li>
                 <li class="sidebar-item @yield('nav-changePassword')">
                     <a href="{{ route('change-password') }}" class="sidebar-link">

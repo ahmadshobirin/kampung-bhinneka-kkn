@@ -135,17 +135,16 @@
                             "id": id,
                             "_token": '{{ csrf_token() }}',
                         },
-                        success: function (){
-                            Swal.fire({
-                                type: 'success',
-                                icon: 'success',
-                                title: 'Data UMKM berhasil dihapus!',
-                                showConfirmButton: true,
-                                timer: 3000
-                            });
-
-                            // $(`#index_${category_id}`).remove();
-                            location.reload(true);
+                        success: function (res){
+                            Toastify({
+                                text: res.message,
+                                duration: 3000,
+                                close: true,
+                                backgroundColor: "#4fbe87",
+                            }).showToast();
+                            setTimeout(() => {
+                                location.reload();
+                            }, 500);
                         }
                     });
                 }

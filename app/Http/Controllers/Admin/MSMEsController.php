@@ -138,11 +138,13 @@ class MSMEsController extends Controller
 
     public function destroy($id)
     {
-        MSMEs::where('id',$id)->delete();
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Data UMKM Berhasil Dihapus!.',
-        ]);
+        try {
+            MSMEs::where('id',$id)->delete();
+            
+            return response(['message' => 'Data berhasil dihapus.']);
+        } catch (\Exception $e) {
+            logger()->error($e->getMessage());
+            return response(['message' => 'Data Gagal dihapus.']);
+        }
     }
 }

@@ -130,11 +130,13 @@ class BlogController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        Blog::where('id',$id)->delete();
-        
-        return response()->json([
-            'success' => true,
-            'message' => 'Data Berita Berhasil Dihapus!.',
-        ]);
+        try {
+            Blog::where('id',$id)->delete();
+            
+            return response(['message' => 'Data berhasil dihapus.']);
+        } catch (\Exception $e) {
+            logger()->error($e->getMessage());
+            return response(['message' => 'Data Gagal dihapus.']);
+        }
     }
 }

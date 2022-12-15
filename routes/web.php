@@ -63,6 +63,13 @@ Route::middleware(['auth'])->prefix("admin")->group(function () {
     Route::get("/gallery/{id}/edit", "Admin\GalleryController@edit")->name("gallery.edit");
     Route::put("/gallery/{id}", "Admin\GalleryController@update")->name("gallery.update");
     Route::delete("/gallery/{id}", "Admin\GalleryController@destroy")->name("gallery.destroy");
+
+    Route::get("/clothing", "Admin\CustomClothingRentalController@index")->name("clothing.index");
+    Route::get("/clothing/create", "Admin\CustomClothingRentalController@create")->name("clothing.create");
+    Route::post("/clothing/store", "Admin\CustomClothingRentalController@store")->name("clothing.store");
+    Route::get("/clothing/{id}/edit", "Admin\CustomClothingRentalController@edit")->name("clothing.edit");
+    Route::put("/clothing/{id}", "Admin\CustomClothingRentalController@update")->name("clothing.update");
+    Route::delete("/clothing/{id}", "Admin\CustomClothingRentalController@destroy")->name("clothing.destroy");
 });
 
 // inject command artisan
