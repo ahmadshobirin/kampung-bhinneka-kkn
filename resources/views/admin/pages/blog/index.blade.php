@@ -53,8 +53,8 @@
                                                     -
                                                 @endif
                                             </td>
-                                            {{-- <td>{{ ucfirst($item->user->name) }}</td>
-                                            <td> 
+                                            <td>{{ ucfirst($item->user->name) }}</td>
+                                            {{-- <td> 
                                                 @if($item->is_higlight_post)
                                                     <span class="badge bg-primary"> Aktif </span>
                                                 @else
