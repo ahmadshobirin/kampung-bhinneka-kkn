@@ -112,7 +112,7 @@ class MSMEsController extends Controller
         $request->validate([
             "nib"           => "numeric|digits_between:10,20|nullable",
             "demografis_id" => "required",
-            "name"          => "required|string|unique:micro_small_and_medium_enterprises,",
+            "name"          => "required|string|unique:micro_small_and_medium_enterprises,name,".$id,
             "address"       => "required|string",
             "description"   => "required",
             "business_type" => "required",
