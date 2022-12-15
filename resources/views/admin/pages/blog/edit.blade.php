@@ -74,6 +74,25 @@
                                                 <textarea name="description" id="summernote" class="form-control">{{ $data->description }}</textarea>
                                             </div>
                                         </div>
+
+                                        <div class="col-12">
+                                            <label for="">Status</label>
+                                            <fieldset class="form-group">
+                                                <select name="status" class="form-control">
+                                                    <option value="" selected disabled> Pilih Status</option>
+                                                    <option @if( $data->status == \App\Models\Blog::STATUS_PUBLISHED) selected @endif value="published">
+                                                        Tayangkan
+                                                    </option>
+                                                    <option @if( $data->status == \App\Models\Blog::STATUS_UNLISTED) selected @endif value="unlisted">
+                                                        Hilangkan
+                                                    </option>
+                                                    <option @if( $data->status == \App\Models\Blog::STATUS_ARCHIVED) selected @endif value="unlisted">
+                                                        Arsipkan
+                                                    </option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex justify-content-end">

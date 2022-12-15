@@ -113,7 +113,7 @@ class BlogController extends Controller
         $request->validate([
             "title"        => "required|string|unique:blogs,title,".$id,
             "description"  => "required",
-            "image_upload" => "required|image|mimes:jpeg,png,jpg,gif|max:1024",
+            "image_upload" => "image|mimes:jpeg,png,jpg,gif|max:1024|nullable",
             "category_id"  => "required"
         ]);
 
