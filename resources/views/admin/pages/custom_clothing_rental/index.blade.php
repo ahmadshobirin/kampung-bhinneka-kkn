@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableClothing">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -81,6 +81,9 @@
 
 @section('script')
     <script>
+        // DataTable 
+        $('#tableClothing').dataTable();
+
         // Delete Data Kategori
         $(".btn-delete").click(function(){
             var id = $(this).data("id");

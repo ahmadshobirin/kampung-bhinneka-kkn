@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableUmkm">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -114,6 +114,9 @@
                 backgroundColor: "#f01d1d",
             }).showToast();
         @endif
+
+        // DataTable
+        $("#tableUmkm").dataTable();
 
         // Delete Data Kategori
         $(".btn-delete").click(function(){

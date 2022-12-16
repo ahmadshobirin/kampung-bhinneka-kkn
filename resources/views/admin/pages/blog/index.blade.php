@@ -27,7 +27,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableBlog">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -98,6 +98,9 @@
 
 @section('script')
     <script type="text/javascript">
+
+        // DataTable
+        $('#tableBlog').dataTable();
 
         // Delete Data Kategori
         $(".btn-delete").click(function(){

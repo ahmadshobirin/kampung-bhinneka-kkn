@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableGallery">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -76,6 +76,9 @@
 @endsection
 @section('script')
 <script>
+    // DataTable
+    $('#tableGallery').dataTable();
+
     function hapus(id){
         if (confirm('Anda yakin ingin menghapus data ini?')) {
             $.ajax({
