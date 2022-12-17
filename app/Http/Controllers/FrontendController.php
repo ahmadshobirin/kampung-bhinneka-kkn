@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Demografi;
 use App\Models\Gallery;
 use App\Models\MicroSmallAndMediumEnterprise;
+use App\Models\CustomClothingRental;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +19,7 @@ class FrontendController extends Controller
         $toddler = Demografi::sum('toddler');
         $elderly = Demografi::sum('elderly');
         $gallery = Gallery::latest()->limit(6)->get();
+        $clothing = CustomClothingRental::latest()->limit(6)->get();
 
         return view("index", [
             "headOfFamily" => $headOfFamily,
@@ -25,6 +27,7 @@ class FrontendController extends Controller
             "toddler"      => $toddler,
             "elderly"      => $elderly,
             "gallery"      => $gallery,
+            "clothing"     => $clothing,
             "parent"       => "Beranda",
         ]);
     }
@@ -92,6 +95,26 @@ class FrontendController extends Controller
             "anotherNews"           => $anotherNews,
             "blog"                  => $blog,
             "countBlogByCategories" => $countBlogByCategories,
+        ]);
+    }
+
+    public function clothingRental()
+    {
+        $clothing = CustomClothingRental::latest()->get();
+
+        return view('custom_clothing_rental', [
+            'data'  => $clothing,
+            'parent'=> 'Penyewaan Baju Adat'
+        ]);
+    }
+
+    public function clothingRentalDetail($id)
+    {
+        $clothing = CustomClothingRental::where('id', $id)->firstOrFail();
+
+        return view('custom_clothing_rental_detail', [
+            'item'      => $clothing,
+            'parent'    => 'Penyewaan Baju Adat'
         ]);
     }
 }

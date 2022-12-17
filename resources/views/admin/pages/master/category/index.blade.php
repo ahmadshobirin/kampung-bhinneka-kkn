@@ -77,6 +77,9 @@
 @section('script')
     <script type="text/javascript">
 
+        // DataTable
+        $('#tableCategory').dataTable();
+
         // Delete Data Kategori
         $(".btn-delete").click(function(){
             var id = $(this).data("id");

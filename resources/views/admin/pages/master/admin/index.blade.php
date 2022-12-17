@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped table_admin">
+                    <table class="table table-hover table-striped" id="tableAdmin">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -91,5 +91,8 @@
                 backgroundColor: "#f01d1d",
             }).showToast();
         @endif
+
+        // DataTable
+        $('#tableAdmin').dataTable();
     </script>
 @endsection

@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <table class="table table-hover">
+                            <table class="table table-hover" id="tableClothing">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -57,7 +57,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ "Rp ". number_format($item->price, 2) }}</td>
-                                            <td>{{ $item->description }}</td>
+                                            <td>{!! $item->description !!}</td>
                                             <td>
                                                 <a href="{{ route('clothing.edit', ['id' => $item->id ]) }}" class="btn icon btn-primary"> 
                                                     <i class="fa fa-pencil-alt"></i> 
@@ -81,6 +81,9 @@
 
 @section('script')
     <script>
+        // DataTable 
+        $('#tableClothing').dataTable();
+
         // Delete Data Kategori
         $(".btn-delete").click(function(){
             var id = $(this).data("id");

@@ -8,6 +8,8 @@ Route::get('/umkm', "FrontendController@umkm")->name("fe.umkm");
 Route::get('/umkm/{slug}', "FrontendController@detailUmkm")->name("fe.umkm.detail");
 Route::get('/berita', "FrontendController@news")->name("fe.news");
 Route::get('/berita/{slug}', "FrontendController@newsDetail")->name("fe.news.detail");
+Route::get('/clothing', "FrontendController@clothingRental")->name("fe.clothing");
+Route::get('/clothing/{id}', "FrontendController@clothingRentalDetail")->name("fe.clothing.detail");
 
 
 Route::middleware(['guest'])->group(function () {
