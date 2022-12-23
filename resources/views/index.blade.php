@@ -147,5 +147,19 @@
         </div>
       </div>
     </section>
+
+    <section id="video" class="services section-bg ">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Video</h2>
+          {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p> --}}
+        </div>
+
+            <iframe style="padding: 2rem; width: 1250px; height: 500px;"  src="https://www.youtube.com/embed/L5KtN7zf3Wk" allow="autoplay; encrypted-media; fullscreen"></iframe>
+            {{-- <iframe style="padding: 2rem; width: 1250px; height: 500px;"  src="https://www.youtube.com/embed/L5KtN7zf3Wk" allow="autoplay; encrypted-media; fullscreen"></iframe> --}}
+
+      </div>
+    </section><!-- End Services Section -->
     
 @endsection

@@ -24,6 +24,12 @@ a:hover {
     text-decoration: none;
 }
 
+iframe {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
 h1,
 h2,
 h3,
